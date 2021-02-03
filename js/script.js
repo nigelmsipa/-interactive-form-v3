@@ -37,7 +37,6 @@ window.onload = function () {
   colorSelect.disabled = true;
   //   select the credit card to be defual payment method on load
   payment[1].selected = true;
-
   paypal.style.display = 'none';
   bitcoin.style.display = 'none';
 };
@@ -57,31 +56,25 @@ jobRoleSelect.addEventListener('change', (e) => {
 ///////////////////////////////// T shirt info
 designSelect.addEventListener('change', (e) => {
   //when user selects a design the color option is available
-  const cornflowerblue = document.getElementById('cornflowerblue');
-  const darkslategrey = document.getElementById('darkslategrey');
-  const gold = document.getElementById('gold');
-  const tomato = document.getElementById('tomato');
-  const steelblue = document.getElementById('steelblue');
-  const dimgrey = document.getElementById('dimgrey');
+
   colorSelect.disabled = false;
   //   T-Shirt Info" section conditionals that determine which options should be selectable
   // NOT DRY I :( I decided to brute force this step and refactor it later
-  if (e.target.value === 'heart js') {
-    cornflowerblue.disabled = true;
-    darkslategrey.disabled = true;
-    gold.disabled = true;
-    tomato.disabled = false;
-    steelblue.disabled = false;
-    dimgrey.disabled = false;
-  }
-  if (e.target.value === 'js puns') {
-    cornflowerblue.disabled = false;
-    darkslategrey.disabled = false;
-    gold.disabled = false;
 
-    tomato.disabled = true;
-    steelblue.disabled = true;
-    dimgrey.disabled = true;
+  for (let i = 0; i < colorSelect.length; i++) {
+    colorSelect[i].style.display = 'none';
+    if (
+      e.target.value === 'heart js' &&
+      colorSelect[i].getAttribute('data-theme') === 'heart js'
+    ) {
+      colorSelect[i].style.display = 'block';
+    }
+    if (
+      e.target.value === 'js puns' &&
+      colorSelect[i].getAttribute('data-theme') === 'js puns'
+    ) {
+      colorSelect[i].style.display = 'block';
+    }
   }
 });
 
