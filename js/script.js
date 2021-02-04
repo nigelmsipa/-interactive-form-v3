@@ -27,6 +27,7 @@ const ccError = document.getElementById('cc-hint'); //error message for credit c
 const zipError = document.getElementById('zip-hint'); //error message for zip
 const cvvError = document.getElementById('cvv-hint'); //error message for cvv
 const cvvErrortwo = document.getElementById('cvv-hint-two'); //error message for cvv
+
 ///////////////////////////////// onload functions
 window.onload = function () {
   //The "Name" field focus attrubute is true onload
@@ -58,22 +59,26 @@ designSelect.addEventListener('change', (e) => {
   //when user selects a design the color option is available
 
   colorSelect.disabled = false;
+  color.children[0].style.display = 'none';
   //   T-Shirt Info" section conditionals that determine which options should be selectable
   // NOT DRY I :( I decided to brute force this step and refactor it later
 
   for (let i = 0; i < colorSelect.length; i++) {
     colorSelect[i].style.display = 'none';
+
     if (
       e.target.value === 'heart js' &&
       colorSelect[i].getAttribute('data-theme') === 'heart js'
     ) {
       colorSelect[i].style.display = 'block';
+      colorSelect[i].selected = true;
     }
     if (
       e.target.value === 'js puns' &&
       colorSelect[i].getAttribute('data-theme') === 'js puns'
     ) {
       colorSelect[i].style.display = 'block';
+      colorSelect[i].selected = true;
     }
   }
 });
